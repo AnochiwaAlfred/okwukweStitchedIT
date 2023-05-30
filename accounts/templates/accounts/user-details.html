@@ -1,0 +1,30 @@
+{% extends 'dashboard/base.html' %}
+
+
+{% block content %}
+
+<div class="h2 mt-4 ">View User</div>
+
+<div class="col-sm-6 mb-5">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" id="username" placeholder="" value="{{userx.username}}" disabled name="username">
+  </div>
+
+  <div class="col-sm-6 mb-5">
+    <label for="first_name" class="form-label">First name</label>
+    <input type="text" class="form-control" id="first_name" placeholder="" value="{{userx.first_name}}" disabled name="first_name">
+  </div>
+
+  <div class="col-sm-6 mb-5">
+    <label for="last_name" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="last_name" placeholder="" value="{{userx.last_name}}" disabled name="last_name">
+  </div>
+
+  <div class="col-sm-6 mb-5">
+    <label for="email" class="form-label">Email</label>
+    <input type="text" class="form-control" id="email" placeholder="" value="{{userx.email}}" disabled name="email">
+  </div>
+
+
+
+{% endblock content %}

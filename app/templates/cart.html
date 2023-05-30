@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form class="col-10 mx-auto mt-5 p-5 bg-light d-flex" method="POST" action="checkout">
+    {% if cartList.count == 0 %}
+    <div class="col-10 text-center mx-auto">
+        <img src="{% static 'icons/cart.png' %}" alt="" width="50px">
+        <p class="h6">Your cart is empty!</p>
+        <p class="f7">Browse our collection and discover our best deals.&#128526;</p>
+        <a name="" id="" class="btn btn-warning btn-sm mt-1 car-btn" href="../../../" role="button">EXPLORE NOW</a>
+    </div>
+    {% else %}
+    <div class="col-9">
+        <p class="h5">Cart ({{cartList.count}})</p>
+        <hr class="hr">
+        <div class="col-12">
+            {% for item in cartList %}
+            <div class="col-11 my-2 border-bottom d-flex justify-content-center">
+                <a title="Remove from Cart" class="rounded-0 btn btn-danger px-0 py-0 fl" style="height: 20px; width:20px;">
+                    <svg width="10px" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>
+                </a>
+                <div class="col-2 d-flex align-items-center justify-content-center">
+                    <img src="{{item.product.image.url}}" alt="" height="100px">
+                </div>
+                <div class="col-4 ms-2">
+                    <p class="my-0 h6">{{item}}</p>
+                    <p class="small my-0 text-success d-flex justify-content-start align-items-center">In stock 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ms-2" viewBox="0 0 512 512" fill="rgb(0, 95, 0)" width="15px"><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
+                    </p>
+                    <p class="ubuntu my-0"><span class="fw-light">okwukwe</span><span class="barlow fw-bolder">stitchedIT<span class="" style="font-size:30px; color:orangered;">.</span></span></p>
+                </div>
+                <div class="col-6">
+                    <div class="col-12 text-end fw-bolder text-secondary">&#8358;<span class="item-price" id="item{{item.id}}-price" name="item{{item.id}}"><span class="actual-price">{{item.product.price}}</span>/unit</span></div>
+                    <div class="col-12 mt-4 counter d-flex justify-content-end align-items-center">
+                        <a title="Decrease" id="d-{{item.id}}" class="rounded-0 sh tooltip-test btn btn-fire px-2 py-0 align-items-center" onclick="decrease({{item.id}})">
+                            <svg width="10px" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>
+                        </a>
+                        <input disabled class="rounded-0 form-control border-none text-center fw-bold item-quantity" data-quantity="{{item.product.quantityAvailable}}" style="font-size:12px; border:none; background-color:rgba(255, 255, 255, 0.377); height: 26px; width:40px;" id="{{item.id}}" type="text" value="1" aria-label="">
+                        <a title="Increase" id="i-{{item.id}}" class="rounded-0 sh tooltip-test btn btn-fire px-2 py-0 align-items-center" onclick="increase({{item.id}})">
+                            <svg width="10px" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-3 ms-3 bg-secondary text-light container py-2">
+        <p class="h6">CART SUMMARY</p>
+        <hr class="hr">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <p class="h6">Total</p>
+            <p class="h4">&#8358;<span id="total"></span></p>
+        </div>
+        <p class="small f7">Delivery fees not included yet.</p>
+        <button type="submit" class="btn btn-fire btn-sm rounded-0 w-100">Order (&#8358;)</button>
+    </div>
+    {% endif %}
+</form>
+
+{% endblock %}
+
+<script src="{% static 'js/cart.js'%}"></script>
+

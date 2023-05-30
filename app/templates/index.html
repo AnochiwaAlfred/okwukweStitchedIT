@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row p-5 text-center" >
+    <div class="col-3x card">
+        <div class="col-8 col-8x align-items-center d-flex justify-contents-center">
+            <div class="col-4">
+                <img src="{% static 'icons/donation.png' %}" width="60px" alt="">
+            </div>
+            <div class="col-8 pt-3">
+                <p style="line-height: 10px;" class="h5">Free Shipping</p>
+                <p class="text-secondary" style="font-size: 12px; line-height:15px;">Capped at N1000 per order</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-3x card">
+        <div class="col-8 col-8x align-items-center d-flex justify-contents-center">
+            <div class="col-4">
+                <img src="{% static 'icons/teamwork.png' %}" width="60px" alt="">
+            </div>
+            <div class="col-8 pt-3">
+                <p style="line-height: 10px;" class="h5">Secure Payments</p>
+                <p class="text-secondary" style="font-size: 12px; line-height:15px;">Upto 12 months installment</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-3x card">
+        <div class="col-8 col-8x align-items-center d-flex justify-contents-center">
+            <div class="col-4">
+                <img src="{% static 'icons/olive.png' %}" width="50p6" alt="">
+            </div>
+            <div class="col-8 pt-3">
+                <p style="line-height: 10px;" class="h5">14-Day Returns</p>
+                <p class="text-secondary" style="font-size: 12px; line-height:15px;">Shop with confidence</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="hr col-10 mx-auto">
+<div class="col-12 fs-2 fw-bold text-center my-4 ubuntu" id="shop">Our Products</div>
+<hr class="hr col-9 mx-auto">
+
+
+<div class="row d-flex justify-content-center">
+    <div class="col-10 d-flex row justify-content-center align-items-center g-2">
+        {% for product in products %}
+        <div class="col-2 my-3 mx-2">
+            <div class="col-12 pic d-flex justify-content-center align-items-center">
+                <img src="{{product.image.url}}" alt="">
+            </div>
+            <strong class="quantity float-end bg-warning">{{product.quantityAvailable}}</strong>
+            <div class="col-12 mt-3">
+                <p class="h6 mb-0 product-card">{{product.name}}</p>
+                <p style="font-size: 13px;" class="d-flex align-items-center justify-content-between">
+                    <span class="text-secondary h6 mt-2 ms-0">&#8358;{{product.price}}</span>
+                {% if product.quantityAvailable != 0 %}
+                    <a name="" id="" class="btn btn-xm btn-success cart-btn rounded-0" href="../../add-to-cart/{{user.id}}/{{product.productID}}" role="button">
+                        Add to cart
+                    </a>    
+                    
+
+                </p>
+                <p class="small text-success d-flex justify-content-start align-items-center">In stock 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ms-2" viewBox="0 0 512 512" fill="rgb(0, 95, 0)" width="15px"><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
+                </p>
+                {% else %}
+                <p class="small text-danger text-decoration-line-through d-flex justify-content-start align-items-center">Out of stock
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ms-2" viewBox="0 0 512 512" fill="rgb(95, 0, 0)" width="15px"><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+                </p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+  
+
+{% endblock %}
+
+
+
+{% comment %} <a name="" id="" class="btn btn-xm btn-success cart-btn rounded-0" href="" role="button" data-bs-toggle="modal" data-bs-target="#addToCartModal">
+    Add to cart
+</a>    
+<!-- Modal -->
+<div class="modal fade animate__animated animate__fadeInUp animate__faster" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="addToCartModalLabel">Add To Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        ...
+        </div>{{product.name}}
+        <div class="modal-footer">
+        <button type="button" class="btn btn-sm rounded-0 btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-sm rounded-0 btn-fire">Save changes</button>
+        </div>
+    </div>
+    </div>
+</div> {% endcomment %}

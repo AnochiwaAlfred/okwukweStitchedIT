@@ -1,0 +1,83 @@
+{% extends 'dashboard/base.html' %}
+
+
+{% block content %}
+
+
+<div class="row mt-4">
+    <div class="h2 col-10">Authorized Users</div>
+    <div class="col-2">
+        {% if usernow.is_superuser %}
+        <a name="add-user" id="add-user" class="btn btn-secondary" href="add-user" role="button">
+            ADD USER 
+            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="white" viewBox="0 0 448 512"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"/></svg>
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+<div class="table-container m-4 ">
+    <table class="table sm table-hover ">
+    <thead>
+        <tr class="h6">
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>FirstName</th>
+            <th>Lastname</th>
+        {% if usernow.is_superuser %}
+            <th>Action</th>
+        {% endif %}
+        <tr>
+    </thead>
+    <tbody>
+        {% for u in users %}
+        <tr>
+            <td>
+                <span href="details/{{u.id}}" class="text-decoration-none text-dark" id="{{ u.id }}">
+                    {{u.id}}
+                </span>
+            </td>
+            <td>
+                <a href="details/{{u.id}}" class="text-decoration-none text-primary h6" id="{{ u.username }}">
+                    {{u.username}}
+                </a>
+            </td>
+            <td>
+                <span href="details/{{u.id}}" class="text-decoration-none text-dark" id="{{ u.email }}">
+                    {{u.email}}
+                </span>
+            </td>
+
+            <td>
+                <span href="details/{{u.id}}" class="text-decoration-none text-dark" id="{{ u.first_name }}">
+                    {{u.first_name}}
+                </span>
+            </td>
+            <td>
+                <span href="details/{{u.id}}" class="text-decoration-none text-dark" id="{{ u.last_name }}">
+                    {{u.last_name}}
+                </span>
+            </td>
+
+        {% if usernow.is_superuser %}
+            <td>
+                <a href="edit-user/{{u.id}}" class="text-decoration-none text-dark" id="{{ u.id }}">
+                    <button type="button" class="btn btn-sm btn-primary">Edit</button>
+                </a>
+                <a href="delete-user/{{u.id}}" class="text-decoration-none text-dark" id="{{ u.id }}">
+                    <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                </a>
+            </td>
+        {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}
