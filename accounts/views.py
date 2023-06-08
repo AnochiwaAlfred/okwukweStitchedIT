@@ -1,11 +1,7 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required, user_passes_test
-from django.urls import reverse
-from django.contrib.auth.context_processors import PermWrapper
-from accounts.models import MyUser, MyUserManager
+from django.contrib.auth.decorators import login_required
+from accounts.models import MyUser
 
 # Create your views here.
 
@@ -22,17 +18,17 @@ def loginView(request):
         if user is not None:
             login(request, user)
             print('Correct')
-            next_page = request.POST.get('next', '/') # get next page
-            login_url = next_page
+            login_url = request.POST.get('next', '/') # get next page
+            # login_url = next_page
             return redirect(login_url)
         
         else:
             print('Wrong Username or Password')
-            return render(request, 'login.html', {'error_message': 'Invalid login credentials'})
+            return render(request, 'accounts/login.html', {'error_message': 'Invalid login credentials'})
     else:
         next_url = request.GET.get('next', '/') # get next page
         context = {'next_url':next_url}
-        return render(request, 'accounts/loginx.html', context)
+        return render(request, 'accounts/login.html', context)
     
 
 @login_required
@@ -80,7 +76,7 @@ def registerView(request):
         next_url = request.GET.get('next', '/') # get next page
         context = {'next_url':next_url}
         return render(request, 'accounts/register.html', context)
-    
+
 def subscribeView(request):
     user = request.user
     newsLetterEmail = request.POST.get('newsLetterEmail')
@@ -90,6 +86,7 @@ def subscribeView(request):
     print('Successfully saved subscription email')
     return redirect('/')
 
+@login_required
 def profileView(request):
     user = request.user
     newsLetterEmail = request.POST.get('newsLetterEmail')
