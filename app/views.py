@@ -1,13 +1,14 @@
 
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator
-from django.db.models import Q
 from products.models import Product
 from orderitems.models import OrderItem
 from accounts.models import MyUser
 from django.http import HttpResponseForbidden
+import json
+from django_countries import countries
+from orders.models import Order
+from orderhistory.models import OrderHistory
 
 
 # Create your views here.
@@ -20,6 +21,8 @@ def index(request):
         'products':productList,
         'pageName':pageName,
     }
+    message = request.GET.get('data')
+    context.update({'message':message})
     return render(request, 'index.html', context)
 
 @login_required()
@@ -51,24 +54,18 @@ def addToCart(request, id, productID):
     return redirect('/')
 
 @login_required()
-def removeFromCart(request, id, productID):
+def removeFromCart(request, id, itemID):
     user = MyUser.objects.get(pk=id)
-    product = Product.objects.get(productID=productID)
-    user.cart.remove(product)
+    item = OrderItem.objects.get(id=itemID)
+    user.cart.remove(item)
     user.save()
-    cartList = user.cart.all()
-    for item in cartList:
-        print(item)
-    return redirect('/')
+    return cart(request, id)
 
 @login_required()
-def clearCart(request, id, productID):
+def clearCart(request, id):
     user = MyUser.objects.get(pk=id)
     user.cart.clear()
     user.save()
-    cartList = user.cart.all()
-    for item in cartList:
-        print(item)
     return redirect('/')
 
 @login_required()
@@ -96,3 +93,61 @@ def contactView(request):
         'pageName':pageName,
     }
     return render(request, 'contact.html', context)
+
+@login_required()
+def updateCart(request, id, item_id):
+    user = MyUser.objects.get(id=id)
+    if request.method=='POST':
+        item = user.cart.get(id=item_id)
+        quantity=json.loads(request.body)
+        print('A -', quantity, item.quantity, item.product.quantityAvailable)
+        if item.product.quantityAvailable>=quantity:
+            item.quantity = quantity
+            item.save()
+        user.save()
+        print('B -', quantity, item.quantity, item.product.quantityAvailable)
+        print(f"Updated {user}'s cart")
+    return render(request, 'cart.html')
+
+
+
+@login_required()
+def orderRequest(request, id):
+    user = MyUser.objects.get(pk=id)
+    cart = user.cart.all()
+    total = sum([item.get_total for item in cart])
+    COUNTRY = [name for (code, name) in countries]
+    payments=[key for (key, value) in Order.PAYMENTMETHOD]
+    context={'total':total, 'countries':COUNTRY, 'payments':payments}
+    return render(request, 'create-order.html', context)
+
+
+
+@login_required()
+def checkoutCart(request):
+    if request.method=='POST':
+        data = {
+            'paymentMethod':request.POST.get('paymentMethod'), 
+            'streetAddress':request.POST.get('streetAddress'), 
+            'apartmentAddress':request.POST.get('apartmentAddress'),
+            'state':request.POST.get('state'), 
+            'city':request.POST.get('city'), 
+            'country':request.POST.get('country'),
+        }
+        order = Order.objects.create(**data)
+        user=request.user
+        for item in user.cart.all():
+            order.orderItems.add(item)
+            item.reduce()
+            item.save()
+        order.save()
+        if user.orderHistory==None:
+            orderHistory=OrderHistory.objects.create()
+            user.orderHistory=orderHistory
+            user.save()
+        user.orderHistory.orders.add(order)
+        user.cart.clear()
+        user.save()
+    context={'message':'Purchase Successful'}
+    # return render(request, 'index.html', context)
+    return redirect('../../../?data=' + context['message'])

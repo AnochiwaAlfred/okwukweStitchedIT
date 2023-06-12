@@ -1,7 +1,4 @@
 from django.db import models
-from orders.models import Order
-from products.models import Product
-from orderitems.models import OrderItem
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Group
 
 # Create your models here.
@@ -58,8 +55,9 @@ class MyUser(AbstractBaseUser):
     profile_pics = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    cart = models.ManyToManyField(OrderItem, blank=True, related_name='cart')
-    wishList = models.ManyToManyField(Product, blank=True, related_name='wishList')
+    cart = models.ManyToManyField('orderitems.OrderItem', blank=True, related_name='cart')
+    orderHistory = models.ForeignKey('orderhistory.OrderHistory', blank=True, null=True, on_delete=models.CASCADE, related_name='order_history')
+    wishList = models.ManyToManyField('products.Product', blank=True, related_name='wishList')
     newsLetterSub = models.BooleanField(verbose_name='Subscription Status',default=False, blank=True, null=False)
     newsLetterEmail = models.EmailField(max_length=255, unique=True, blank=True, null=True)
     

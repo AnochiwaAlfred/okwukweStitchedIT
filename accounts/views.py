@@ -24,11 +24,11 @@ def loginView(request):
         
         else:
             print('Wrong Username or Password')
-            return render(request, 'accounts/login.html', {'error_message': 'Invalid login credentials'})
+            return render(request, 'accounts/loginx.html', {'error_message': 'Invalid login credentials'})
     else:
         next_url = request.GET.get('next', '/') # get next page
         context = {'next_url':next_url}
-        return render(request, 'accounts/login.html', context)
+        return render(request, 'accounts/loginx.html', context)
     
 
 @login_required

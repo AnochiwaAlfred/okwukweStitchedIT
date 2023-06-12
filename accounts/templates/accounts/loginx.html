@@ -74,7 +74,7 @@
                 <h2>Welcome Back!</h2>
                 <p class="text-secondary mb-5">Sign In to continue to <strong class="text-success">OkwukweStitchedIT</strong></p>
 
-                <form action="{% url 'login' %}" method="post" class="row m-1">
+                <form action="{% url 'login' %}" method="post" class="row m-1" enctype="multipart/form-data">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ next_url }}">
                     <div class="mb-3">

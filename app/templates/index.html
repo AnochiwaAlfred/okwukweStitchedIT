@@ -55,7 +55,7 @@
                 <p class="h6 mb-0 product-card">{{product.name}}</p>
                 <p style="font-size: 13px;" class="d-flex align-items-center justify-content-between">
                     <span class="text-secondary h6 mt-2 ms-0">&#8358;{{product.price}}</span>
-                {% if product.quantityAvailable != 0 %}
+                {% if product.available == True  %}
                     <a name="" id="" class="btn btn-xm btn-success cart-btn rounded-0" href="../../add-to-cart/{{user.id}}/{{product.productID}}" role="button">
                         Add to cart
                     </a>    
@@ -76,8 +76,30 @@
     </div>
 </div>
 
+{% if message %}
+<!-- Modal -->
+<div class="modal fade animate__animated animate__fadeInUp animate__faster" id="purchaseSuccessfulModal" tabindex="-1" aria-labelledby="purchaseSuccessfulModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h4 class="text-success">{{message}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+    </div>
+    </div>
+</div> 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get a reference to the modal element
+        const modal = document.getElementById('purchaseSuccessfulModal');
+        // Create a new Bootstrap Modal instance
+        const modalInstance = new bootstrap.Modal(modal);
+        // Show the modal
+        modalInstance.show();
+    });
+</script>
 
-  
+  {% endif %}
 
 {% endblock %}
 

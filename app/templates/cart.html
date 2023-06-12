@@ -3,7 +3,8 @@
 
 {% block content %}
 
-<form class="col-10 mx-auto mt-5 p-5 bg-light d-flex" method="POST" action="checkout">
+<form class="col-10 mx-auto mt-5 p-5 bg-light d-flex" method="POST" action="{{user.id}}/order">
+    {% csrf_token %}
     {% if cartList.count == 0 %}
     <div class="col-10 text-center mx-auto">
         <img src="{% static 'icons/cart.png' %}" alt="" width="50px">
@@ -18,7 +19,7 @@
         <div class="col-12">
             {% for item in cartList %}
             <div class="col-11 my-2 border-bottom d-flex justify-content-center">
-                <a title="Remove from Cart" class="rounded-0 btn btn-danger px-0 py-0 fl" style="height: 20px; width:20px;">
+                <a href="../../../remove-from-cart/{{user.id}}/{{item.id}}" title="Remove from Cart" class="rounded-0 btn btn-danger px-0 py-0 fl" style="height: 20px; width:20px;">
                     <svg width="10px" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>
                 </a>
                 <div class="col-2 d-flex align-items-center justify-content-center">
@@ -37,7 +38,9 @@
                         <a title="Decrease" id="d-{{item.id}}" class="rounded-0 sh tooltip-test btn btn-fire px-2 py-0 align-items-center" onclick="decrease({{item.id}})">
                             <svg width="10px" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>
                         </a>
-                        <input disabled class="rounded-0 form-control border-none text-center fw-bold item-quantity" data-quantity="{{item.product.quantityAvailable}}" style="font-size:12px; border:none; background-color:rgba(255, 255, 255, 0.377); height: 26px; width:40px;" id="{{item.id}}" type="text" value="1" aria-label="">
+
+                        <input  class="rounded-0 form-control border-none text-center fw-bold item-quantity" data-user="{{user.id}}" data-product="{{item.id}}" data-quantity="{{item.product.quantityAvailable}}" style="font-size:12px; border:none; background-color:rgba(255, 255, 255, 0.377); height: 26px; width:50px;" id="{{item.id}}" name="{{item.id}}" type="text" value="1" aria-label="">
+                        
                         <a title="Increase" id="i-{{item.id}}" class="rounded-0 sh tooltip-test btn btn-fire px-2 py-0 align-items-center" onclick="increase({{item.id}})">
                             <svg width="10px" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z"/></svg>
                         </a>
@@ -45,22 +48,35 @@
                 </div>
             </div>
             {% endfor %}
+            <div>
+                <a href="../../../clear-cart/{{user.id}}" title="Clear Cart" class="rounded-0 btn btn-danger px-3 py-2 mt-2 fl">
+                    Clear Cart
+                </a>
+            </div>
         </div>
     </div>
-    <div class="col-3 ms-3 bg-secondary text-light container py-2">
-        <p class="h6">CART SUMMARY</p>
+    <div class="col-3 ms-3 bg-secondary text-light container py-3 h-25">
+        <p class="h6 fw-bold">CART SUMMARY</p>
         <hr class="hr">
         <div class="col-12 d-flex justify-content-between align-items-center">
             <p class="h6">Total</p>
             <p class="h4">&#8358;<span id="total"></span></p>
         </div>
         <p class="small f7">Delivery fees not included yet.</p>
-        <button type="submit" class="btn btn-fire btn-sm rounded-0 w-100">Order (&#8358;)</button>
+        <button type="submit" class="btn btn-fire btn-sm rounded-0 w-100">Order (&#8358;)<span id="order-btn"></span></button>
     </div>
     {% endif %}
+
 </form>
 
-{% endblock %}
+
+
+
 
 <script src="{% static 'js/cart.js'%}"></script>
+<script>
+   
+
+</script>
+{% endblock %}
 
