@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OkwukweStitchedIT - Logged Out</title>
+    {% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/bootstrapi.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="icon" href="{% static 'icons/stitches.png' %}" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: ubuntu-regular;
+            src: url("{% static 'fonts/Ubuntu-Regular.ttf' %}");
+        }
+        @font-face {
+            font-family: ubuntu-medium;
+            src: url("{% static 'fonts/Ubuntu-Medium.ttf' %}");
+        }
+        @font-face {
+            font-family: ubuntu-bold;
+            src: url("{% static 'fonts/Ubuntu-Bold.ttf' %}");
+        }
+        .font-bold{
+            font-family: ubuntu-bold;
+        }
+        .font-medium{
+            font-family: ubuntu-medium;
+        }
+        .font-regular{
+            font-family: ubuntu-regular;
+        }
+        body{
+            height: 100vh;
+            width: 100vw;
+            font: ubuntu-regular;
+        }
+        .bg-pings{
+            background-color: rgb(1, 3, 14);
+        }
+        .btn-pings{
+            background-color: rgb(3, 8, 37);
+            color: white;
+        }
+        .btn-pings:hover{
+            background-color: rgb(7, 17, 73);
+            color: white;
+        }
+        .text-pings{
+            color: rgb(6, 18, 75);
+        }
+        .h-full{
+            height: 100%;
+        }
+        .border-rad{
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body class="row flex-row d-flex justify-content-center align-items-center p-0 m-0 bg-warning">
+    <div class="col-3">
+        <div class="col-12">
+
+        </div><br><br><br><br><br><br><br><br><br><br><br><br>
+        <img src="{% static 'images/illustration8.png' %}" alt="" width="100%">
+    </div>    
+    <div class="col-9 p-5 h-full">
+        <div class="col-12 bg-white h-full border-rad text-center pt-5">
+            <div class="col-5 m-auto">
+                <br><br><br><br>
+                <div class="svg-two svg-class">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="rgb(255, 207, 0)" style="background-color: rgba(255, 208, 0, 0.315); border-radius:50%; padding: 20px;" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                      </svg>
+                  </div>
+                <h1>You are Logged Out</h1>
+                <p class="text-secondary mb-5 h3">Thank you for visiting <strong class="text-pings">OkwukweStitchedIT</strong></p>
+                <a name="" id="" class="btn btn-warning col-12" href="../../accounts/login" role="button">Log In</a>
+
+            </div>
+            <br><br><br><br>
+            <p>&#169; 2023 OkwukweStitchedIT. Crafted with &#10084; by <strong><a href="https://www.github.com/anochiwaalfred" target="_blank" class="text-decoration-none text-pings">Anochiwa Alfred</a></strong></p>
+        </div>
+    </div>    
+ 
+      
+
+
+                {% if error_message %}
+                <div class="alert alert-danger" role="alert">
+                   <strong>Error: </strong> {{ error_message }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+        <script src="{% static 'js/bootstrap.bundle.min.js'%}" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="{% static 'js/docs.min.js'%}"></script>
+</body>
+
+
+</html>

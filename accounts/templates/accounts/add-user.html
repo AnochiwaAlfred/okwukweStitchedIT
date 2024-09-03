@@ -1,0 +1,75 @@
+{% extends 'dashboard/base.html' %}
+
+
+{% block content %}
+
+<div class="h3 col-10 mt-4">Add User</div>
+
+<div class="mb-3 mt-5">
+    <form action="add-user/add" method="post" class="">
+        {% csrf_token %}
+        <div class="col-4 mb-5">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" name="username">
+                <label for="floatingInput">Username</label>
+                <div class="invalid-feedback">
+                    Valid Username is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 mb-5">
+          <div class="form-floating">
+              <input type="email" class="form-control" id="floatingInput" name="email">
+              <label for="floatingInput">Email</label>
+              <div class="invalid-feedback">
+                  Valid Email is required.
+              </div>
+          </div>
+      </div>
+
+      <div class="col-4 mb-5">
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" name="first_name">
+            <label for="floatingInput">First Name</label>
+            <div class="invalid-feedback">
+                Valid Firstname is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4 mb-5">
+      <div class="form-floating">
+          <input type="text" class="form-control" id="floatingInput" name="last_name">
+          <label for="floatingInput">Last Name</label>
+          <div class="invalid-feedback">
+              Valid Lastname is required.
+          </div>
+      </div>
+  </div>
+
+  <div class="col-4 mb-5">
+    <div class="form-floating">
+        <input type="password" class="form-control" id="floatingInput" name="password1">
+        <label for="floatingInput">Password</label>
+    </div>
+</div>
+
+<div class="col-4 mb-5">
+  <div class="form-floating">
+      <input type="password" class="form-control" id="floatingInput" name="password2">
+      <label for="floatingInput">Confirm Password</label>
+  </div>
+</div>
+
+        <div class="col-8"></div>
+
+        <div class="col-12">
+            <a name="" id="" class="btn btn-danger mt-2 ms-1 ps-4 pe-4" href="cancel" role="button">Cancel</a>
+            <input name="" id="" class="btn btn-success mt-2 ms-1 ps-4 pe-4" type="submit" value="Add">
+        </div>
+    </form>
+    
+</div>
+
+{% endblock content %}

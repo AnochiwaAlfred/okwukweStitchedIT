@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="h-5 m-5" >Delivery Details</h1>
+
+<form action="{% url 'checkout' %}" method="post" class="row m-5" id="orderDataSection">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next_url }}">
+    <div class="mb-1 col-6">
+        <label for="streetAddress" class="form-label float-start text-secondary"><strong>Street Address:</strong></label>
+        <input type="text" class="form-control form-control-sm " name="streetAddress" id="streetAddress" aria-describedby="helpId" placeholder="Enter your Street address">
+    </div>
+
+    <div class="mb-1 col-6">
+        <label for="apartmentAddress" class="form-label float-start text-secondary"><strong>Apartment Address:</strong></label>
+        <input type="text" class="form-control form-control-sm " name="apartmentAddress" id="apartmentAddress" aria-describedby="helpId" placeholder="Enter your Apartment address">
+    </div>
+
+    <div class="mb-1 col-6">
+        <label for="state" class="form-label float-start text-secondary"><strong>State:</strong></label>
+        <input type="text" class="form-control form-control-sm " name="state" id="state" aria-describedby="helpId" placeholder="Enter your State of Residence">
+    </div>
+
+    <div class="mb-1 col-6">
+        <label for="city" class="form-label float-start text-secondary"><strong>City:</strong></label>
+        <input type="text" class="form-control form-control-sm " name="city" id="city" aria-describedby="helpId" placeholder="Enter your City of Residence">
+    </div>
+
+    <div class="mb-1 col-6">
+        <label for="country" class="form-label float-start text-secondary"><strong>Country:</strong></label>
+        <select class="form-select form-select-sm" id="country" required="required" name="country">
+          <option value="">Select Country...</option>
+          {% for country in countries %}
+          <option value="{{country}}">{{country}}</option>
+          {% endfor %}
+        </select>
+    </div>
+    
+
+    <div class="mb-1 col-6">
+        <label for="paymentMethod" class="form-label float-start text-secondary"><strong>Payment Method:</strong></label>
+        <select class="form-select form-select-sm" id="paymentMethod" required="required" name="paymentMethod">
+          <option value="">Select Payment Method...</option>
+          {% for method in payments %}
+          <option value="{{country}}">{{method}}</option>
+          {% endfor %}
+        </select>
+    </div>
+
+    <div class="mt-3 col-12 justify-content-center">
+        <button type="submit" class="btn btn-fire btn-sm rounded-0 w-100">Checkout (&#8358;)<span id="order-btn">{{total}}</span></button>
+    </div>
+
+
+    {% comment %} {{ form.render }} {% endcomment %}
+</form>
+
+
+
+{% endblock content %}
