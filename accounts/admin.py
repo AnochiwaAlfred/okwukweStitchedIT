@@ -22,7 +22,7 @@ class UserCreationForm(forms.ModelForm):
         fields = ('username', 'email', 
                   'phone', 'first_name', 
                   'last_name', 'profile_pics', 
-                  'gender', 'password',  'newsLetterSub')
+                  'gender', 'password',  'newsLetterSub') 
         
     def clean_password2(self):
         # Check that the two password entries match

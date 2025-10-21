@@ -1,14 +1,19 @@
 
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from products.models import Product
 from orderitems.models import OrderItem
 from accounts.models import MyUser
 from django.http import HttpResponseForbidden
-import json
 from django_countries import countries
 from orders.models import Order
 from orderhistory.models import OrderHistory
+from django.contrib import messages
+from paypal.standard.forms import PayPalPaymentsForm
+import json
+import uuid
 
 
 # Create your views here.
@@ -118,7 +123,24 @@ def orderRequest(request, id):
     total = sum([item.get_total for item in cart])
     COUNTRY = [name for (code, name) in countries]
     payments=[key for (key, value) in Order.PAYMENTMETHOD]
+    
+    host=request.get_host()
+    # What you want the button to do.
+    paypal_dict = {
+        "business": settings.PAYPAL_RECEIVER_EMAIL,
+        "amount": "1000.00",
+        "item_name": "Product 1",
+        "invoice": str(uuid.uuid4()),
+        'currenc_code': 'USD',
+        "notify_url": f'http://{host}{reverse("paypal-ipn")}',
+        "return_url": f'http://{host}{reverse("payment-done")}',
+        "cancel_return": f'http://{host}{reverse("paypal-cancel")}',
+    }
+
+    # Create the instance.
+    form = PayPalPaymentsForm(initial=paypal_dict)
     context={'total':total, 'countries':COUNTRY, 'payments':payments}
+    context.update({"form": form, 'email':settings.PAYPAL_RECEIVER_EMAIL})
     return render(request, 'create-order.html', context)
 
 
@@ -151,3 +173,36 @@ def checkoutCart(request):
     context={'message':'Purchase Successful'}
     # return render(request, 'index.html', context)
     return redirect('../../../?data=' + context['message'])
+
+
+
+
+
+# # view_that_asks_for_money
+# def home(request): 
+#     host=request.get_host()
+#     # What you want the button to do.
+#     paypal_dict = {
+#         "business": settings.PAYPAL_RECEIVER_EMAIL,
+#         "amount": "1000.00",
+#         "item_name": "Product 1",
+#         "invoice": str(uuid.uuid4()),
+#         'currenc_code': 'USD',
+#         "notify_url": f'http://{host}{reverse("paypal-ipn")}',
+#         "return_url": f'http://{host}{reverse("payment-done")}',
+#         "cancel_return": f'http://{host}{reverse("paypal-cancel")}',
+#     }
+
+#     # Create the instance.
+#     form = PayPalPaymentsForm(initial=paypal_dict)
+#     context = {"form": form, 'email':settings.PAYPAL_RECEIVER_EMAIL}
+#     return render(request, "about.html", context)
+
+
+def payment_done(request):
+    messages.success(request,' Youve successfully made a payment')
+    return redirect('index')
+
+def paypal_cancel(request):
+    messages.error(request,' Youve successfully canceled a payment')
+    return redirect('index')

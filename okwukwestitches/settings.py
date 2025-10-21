@@ -26,12 +26,13 @@ SECRET_KEY = 'django-insecure-2er2!=y9wa@q$o!sl!s07^vjs@f$*n^!&%kx*5zb4_ouftc94j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'paypal.standard.ipn',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,3 +140,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
+
+
+
+# Paypal Settings
+
+PAYPAL_TEST = True
+
+PAYPAL_RECEIVER_EMAIL = 'okwukwestitchedit@gmail.com'
