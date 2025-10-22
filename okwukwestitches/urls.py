@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """okwukwestitches URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,6 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+=======
+
+>>>>>>> 4a8e8a410c304b57e382320e48a01d181f4dd41f
 from django.contrib import admin
 from django.urls import path, include
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 @font-face {
@@ -19,3 +20,26 @@
     width: 25%;
 }   
 
+=======
+
+
+@font-face {
+    font-family: barlow;
+    src: url(../fonts/Barlow-Regular.ttf);
+}
+
+@font-face {
+    font-family: ubuntu;
+    src: url(../fonts/Ubuntu-Regular.ttf);
+}
+
+@font-face {
+    font-family: arima;
+    src: url(../fonts/Arima-VariableFont_wght.ttf);
+}
+
+.col-3x{
+    width: 25%;
+}   
+
+>>>>>>> 4a8e8a410c304b57e382320e48a01d181f4dd41f

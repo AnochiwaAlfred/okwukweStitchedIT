@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -393,3 +394,399 @@
 </body>
 
 </html>
+=======
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OkwukweStitchedIT - {{ pageName }}</title>
+    {% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/bootstrapi.min.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="icon" href="{% static 'icons/stitches.png' %}" type="image/x-icon">
+    <style>
+        .nav-link{
+            font-size: 12px;
+        }
+        .cart-svg:hover {
+            fill: rgb(255, 128, 0);
+        }
+        nav{
+            font-family: ubuntu;
+        }
+        .light-text{
+            font-size: 13px;
+            font-stretch: extra-expanded;
+            font-weight: 400;
+        }
+        .hx{
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 50px;
+            font-family: barlow;
+        }
+        .hy{
+            font-size: 60px;
+            font-weight: 100;
+            line-height: 50px;
+            font-family: barlow;
+        }
+        .car-btn{
+            font-size: 11px;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 0px;
+            font-family: ubuntu;
+            font-stretch: extra-expanded;
+        }
+        .f7{
+            font-size: 13px;
+        }
+        
+        .col-3x{
+            width: 30%;
+            margin: 0px auto;
+            border-radius: 0px;
+            height: 120px;
+            cursor: pointer;
+            transition: all ease-in-out 0.3s;
+        }
+        .col-3x:hover{
+            transform: scale(1.08);
+            transition: all ease-in-out 0.3s;
+        }
+        .col-8x{
+            height: 80px;
+            margin: 20px auto;
+        }
+        .pic{
+            height: 200px;
+            background-color: rgba(128, 128, 128, 0.171);
+        }
+        .pic img{
+            max-width: 120px;
+        }
+        .btn-xm{
+            font-size: 12px;
+            padding: 4px 10px;
+        }
+        .quantity{
+            position: relative;
+            right: 0px;
+            bottom: 35px;
+            padding: 5px 10px;
+        }
+        .product-card{
+            min-height: 50px;
+        }
+        .footer-list{
+            font-size: 13px;
+            text-decoration: none;
+        }
+        .footer-list a{
+            text-decoration: none;
+            color: orangered;
+        }
+        .footer-list a:hover{
+            color: rgb(187, 51, 1);
+            text-decoration: underline;
+        }
+        .footer-link-icon li svg{
+            transition: all ease-in-out 0.2s;
+        }
+        .footer-link-icon:hover li svg{
+            fill: black;
+        }
+
+        .user-section{
+                margin-bottom: 90px;
+        }
+        .btn-fire{
+            background-color: orangered;
+            color: white;
+        }
+        .btn-fire:hover{
+            background-color: rgb(230, 63, 2);
+            color: white;
+        }
+        
+        .user-image{
+            height: 250px;
+            padding: 0px;
+            margin: 5px;
+        }
+        
+        .user-text{
+            background-color: rgba(0, 0, 0, 0.62);
+            height: 70px;
+            position: relative;
+            top: 180px;
+            width: 100%;
+            padding: 5px;
+        }
+        
+        .user-text p{
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .ubuntu{
+            font-family: ubuntu;
+        }
+        .arima{
+            font-family: arima;
+        }
+        .barlow{
+            font-family: barlow;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+          <div class="container-fluid mx-5">
+            <a class="navbar-brand col-2" href="../../../">
+                <img src="{% static 'icons/stitches.png' %}" alt="" width="20%">
+                <span class="h6">Okwukwe<span class="fw-bold">StitchedIT</span><span class="" style="font-size:30px; color:orangered;">.</span></span>
+            </a>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0 col-8 ">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../../" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../#shop">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../contact">Contact Us</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Services
+                        </a>
+                        <div class="dropdown-menu text-light dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item nav-link d-flex align-items-center" href="#"><span class="d-inline-block bg-success rounded-circle me-2" style="width: .5em; height: .5em;"></span>Action</a>
+                          <a class="dropdown-item nav-link d-flex align-items-center" href="#"><span class="d-inline-block bg-primary rounded-circle me-2" style="width: .5em; height: .5em;"></span>Another action</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item nav-link d-flex align-items-center" href="#"><span class="d-inline-block bg-danger rounded-circle me-2" style="width: .5em; height: .5em;"></span>Other Actions</a>
+                          <a class="dropdown-item nav-link d-flex align-items-center" href="#"><span class="d-inline-block bg-info rounded-circle me-2" style="width: .5em; height: .5em;"></span>Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="col-3 d-flex justify-content-end align-items-center">
+
+                    <ul class="text-light navbar-nav mt-2 mt-lg-0  d-flex justify-content-end align-items-center">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item nav-link"> Hello, {{ user.first_name }}</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../../accounts/logout">Logout</a>
+                        </li>
+                    
+                        <a href="../../../cart/{{user.id}}" class="text-decoration-none ms-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class=" cart-svg" fill="white" viewBox="0 0 576 512" width="16px" height="16px">
+                                <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                            </svg>
+                        </a>
+
+                        <a href="../../../accounts/profile" class="text-decoration-none ms-4 ">
+                            <img src="{{user.profile_pics.url}}" width="25px" alt="" class="rounded-circle">
+                        </a>
+                        
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../../accounts/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../../accounts/login">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+      </div>
+    </nav>
+    
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="col-12 d-flex">
+                    <div class="col-5 bg-light d-flex align-items-center">
+                        <div class="text-center m-auto">
+                            <p class="light-text mb-3 animate__animated animate__fadeInUp "># O K W U K W E S T I T C H E D <strong>I T</strong></p>
+                            <p class="hx animate__animated animate__fadeInUp ">Simplify</p>
+                            <p class="hx animate__animated animate__fadeInUp ">Everything.</p>
+                            <a name="" id="" class="btn btn-dark btn-sm mt-3 car-btn animate__animated animate__fadeInUp " href="../../../" role="button">EXPLORE NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <img class="d-block w-100" src="{% static 'images/wall1.jpg' %}" alt="First slide">
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-12 d-flex">
+                    <div class="col-7">
+                        <img class="d-block w-100" src="{% static 'images/wall2.jpg' %}" alt="Second slide">
+                    </div>
+                    <div class="col-5 bg-light d-flex align-items-center">
+                        <div class="text-right m-auto">
+                            <p class="light-text mb-3 animate__animated animate__fadeInUp animate__slower animate__delay-1s "># O K W U K W E S T I T C H E D <strong>I T</strong></p>
+                            <p class="hy text-right animate__animated animate__fadeInUp animate__slower animate__delay-1s ">Effortlessly</p>
+                            <p class="hx text-right animate__animated animate__fadeInUp animate__slower animate__delay-1s ">Portable</p>
+                            <a name="" id="" class="btn btn-outline-dark btn-sm mt-3 car-btn animate__animated animate__fadeInUp animate__slower animate__delay-1s " href="../../../" role="button">DISCOVER NOW</a>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-12 d-flex">
+                    <div class="col-5 bg-light d-flex align-items-center">
+                        <div class="text-right m-auto">
+                            <p class="light-text mb-3 animate__animated animate__fadeInUp animate__slower animate__delay-1s "># O K W U K W E S T I T C H E D <strong>I T</strong></p>
+                            <p class="hy animate__animated animate__fadeInUp animate__slower animate__delay-1s ">Light</p>
+                            <p class="hx animate__animated animate__fadeInUp animate__slower animate__delay-1s ">Woolen</p>
+                            <p class="hx animate__animated animate__fadeInUp animate__slower animate__delay-1s ">Outwear</p>
+                            <a name="" id="" class="btn btn-dark btn-sm mt-3 car-btn animate__animated animate__fadeInUp animate__slower animate__delay-2s " href="../../../" role="button">SHOP NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <img class="d-block w-100" src="{% static 'images/wall3.jpg' %}" alt="Third slide">
+                    </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            {% comment %} <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a> {% endcomment %}
+        </div>
+    
+          
+
+          {% block content %}
+
+          
+          {% endblock %}
+
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue-grey bg-dark text-white d-flex justify-content-center mt-5 py-5">
+        <div class="container row d-flex justify-content-center">
+            <div class="col-4">
+                <p class="hy float-start">okwukwe</p>
+                <p class="hx float-end d-flex align-items-baseline">stitchedIT<span class="ms-0 float-end" style="font-size:80px; color:orangered;">.</span></p>
+                
+            </div>
+            <div class="col-2 ubuntu">
+                <p class="h6 fw-bold">About Ok</p>
+                <hr class="teal mt-0 d-inline-block" style="width: 70px;">
+
+                <ul class="footer-list mt-0 list-unstyled">
+                    <a href="../../../about"><li>About Us</li></a>
+                    <a href="../../../#"><li>Offices</li></a>
+                    <a href="../../../#"><li>Work with us</li></a>
+                    <a href="../../../#"><li>Our Policies</li></a>
+                    <a href="../../../#"><li>Affinity Card</li></a>
+                </ul>
+            </div>
+            <div class="col-2 ubuntu">
+                <p class="h6 fw-bold">Shopguide</p>
+                <hr class="teal mt-0 d-inline-block" style="width: 70px;">
+
+                <ul class="footer-list mt-0 list-unstyled">
+                    <a href="../../../#"><li>Payments</li></a>
+                    <a href="../../../#"><li>Returns</li></a>
+                    <a href="../../../#"><li>Gift Card</li></a>
+                    <a href="../../../#"><li>Guest Purchase</li></a>
+                    <a href="../../../#"><li>Terms & Conditions</li></a>
+                </ul>
+            </div>
+            <div class="col-4 ubuntu">
+                <p class="h6 fw-bold">Newsletter</p>
+                <hr class="teal mt-0 d-inline-block" style="width: 70px;">
+
+                <ul class="footer-list mt-0 list-unstyled">
+                    <li class="animate__animated animate__pulse animate__infinite animate__slow">SUBSCRIBE TO OUR NEWSLETTER</li>
+                    <form action="../../../accounts/subscribe" method="POST">
+                        {% csrf_token %}
+                        <div class="mt-3 d-flex justify-content-center align-items-center">
+                            <input type="email" style="font-size:12px; height: 30px;" class="form-control rounded-0" name="newsLetterEmail" id="newsLetterEmail" aria-describedby="emailHelpId" placeholder="Enter your email">
+                            <button type="submit" style="font-size:12px; height: 30px;" class="btn btn-success btn-sm rounded-0">Submit</button>
+                        </div>
+                    </form>
+                    <div class="footer-links d-flex justify-content-center align-items-center ">
+                        <ul class="d-flex justify-content-center align-items-center mt-3 col-5 list-unstyled">
+                            <a href="https://facebook.com/anochiwaa" class="mx-auto rounded-circle footer-link-icon">
+                                <li> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="" fill="rgb(85,85,85)" height="25px" viewBox="0 0 512 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+                                </li>
+                            </a>
+                            <a href="https://twitter.com/cryptalz" class="mx-auto rounded-circle footer-link-icon">
+                                <li> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="" fill="rgb(85,85,85)" height="25px" viewBox="0 0 512 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+                                </li>
+                            </a>
+                            <a href="#" class="mx-auto rounded-circle footer-link-icon">
+                                <li> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="" fill="rgb(85,85,85)" height="25px" viewBox="0 0 576 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                                </li>
+                            </a>
+                            <a href="https://instagram.com/alf_._ie" class="mx-auto rounded-circle footer-link-icon">
+                                <li> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="" fill="rgb(85,85,85)" height="25px" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+            <div class="footer-copyright text-center text-white-50 py-3 col-12">
+                © 2023 Copyright: Anochiwa Alfred
+            </div>
+        </div>
+    </footer>
+    
+    
+      
+    {% comment %} <script src="{% static 'js/cart.js'%}"></script> {% endcomment %}
+
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="{% static 'js/docs.min.js'%}"></script>
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> {% endcomment %}
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> {% endcomment %}
+    {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.min.js"></script> {% endcomment %}
+    {% comment %} <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> {% endcomment %}
+
+</body>
+
+</html>
+>>>>>>> 4a8e8a410c304b57e382320e48a01d181f4dd41f
